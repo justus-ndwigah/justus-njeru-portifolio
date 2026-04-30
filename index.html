@@ -288,27 +288,28 @@ GROUP BY p.id;</code></pre></div>
       </div>
     </div>
 
+
     <div class="project-card">
       <div class="project-body">
-        <div class="project-tag">Education · Web </div>
-        <div class="project-title">School  Website</div>
-        <div class="project-desc">PHP website to give updates to the community and  St Thomas Kavingoni stakeholders.</div>
-         <div class="project-desc"> Alert!!! App coming soon.</div>
+        <div class="project-tag">Education · Web App</div>
+        <div class="project-title">School Management System</div>
+        <div class="project-desc">PHP/MySQL web app for student records management, and updates from St Thomas Kavingoni.</div>
+        <div class="project-desc">ALERT!!! APP COMING SOON.</div>
         <div class="project-stack"><span class="stack-tag">PHP</span><span class="stack-tag">MySQL</span><span class="stack-tag">HTML/CSS</span></div>
         <div class="project-actions">
-          <a href="https://justus-ndwigah.github.io/kavingoni-sec-website/">⌥ GitHub</a>
+          <a href="https://justus-ndwigah.github.io/kavingoni-sec-website/" class="btn btn-primary btn-sm">⌥ GitHub</a>
         </div>
         <button class="code-toggle" onclick="toggleCode('code2', this)"><span>View Code Snippet</span><span>▼</span></button>
         <div class="code-block" id="code2"><pre><code class="language-php">&lt;?php
-<!doctype html>
-<html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ST THOMAS KAVINGONI SENIOR SCHOOL </title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
-  <style>
+class StudentReport {
+  public function getStudentMarks(, ) {
+     = "SELECT s.subject_name, m.marks, m.grade
+            FROM marks m JOIN subjects s ON m.subject_id = s.id
+            WHERE m.student_id = ? AND m.term = ?";
+     = ->db->prepare();
+    ->execute([, ]);
+    return ->fetchAll(PDO::FETCH_ASSOC);
+  }
 }</code></pre></div>
       </div>
     </div>
