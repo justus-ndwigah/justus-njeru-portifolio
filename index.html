@@ -210,8 +210,25 @@ SELECT p.project_name, p.budget,
 FROM projects p
 LEFT JOIN expenditures e ON p.id = e.project_id
 GROUP BY p.id;</code></pre></div></div></div>
-    <div class="project-card"><div class="project-body"><div class="project-tag">Infrastructure · Networking</div><div class="project-title">LAN Infrastructure Setup</div><div class="project-desc">Full LAN installation for a 50-seat office including structured cabling, switches, router configuration, and Wi-Fi.</div><div class="project-stack"><span class="stack-tag">LAN</span><span class="stack-tag">Networking</span><span class="stack-tag">Windows Server</span></div><div class="project-actions"><a href="https://github.com/justus-ndwigah" target="_blank" class="btn btn-primary btn-sm">⌥ GitHub</a></div><button class="code-toggle" onclick="toggleCode('code3',this)"><span>View Config Snippet</span><span>▼</span></button><div class="code-block" id="code3"><pre><code class="language-bash">netsh dhcp server add scope 192.168.1.0 255.255.255.0 "Office LAN"
-netsh dhcp server scope 192.168.1.0 add iprange 192.168.1.50 192.168.1.200
+    <div class="project-card"><div class="project-body"><div class="project-tag">Education ·  Web App</div><div class="project-title">UniPathKE — Find Your University Path</div><div class="project-desc">Kenya's complete KUCCPS pathway guide, helping KCSE candidates discover the right university, diploma, or TVET program based on their grade level.</div><div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">TypeScript</span><span class="stack-tag">Node.js</span><span class="stack-tag">KUCCPS</span></div><div class="project-actions"><a href="https://uni-path--justusnjeru.replit.app/" target="_blank" class="btn btn-primary btn-sm">⌥ Replit</a></div><button class="code-toggle" onclick="toggleCode('code3',this)"><span>View Config Snippet</span><span>▼</span></button><div class="code-block" id="code3"><pre><code class="language-bash">// Match student's KCSE mean grade to eligible pathways
+function getEligiblePathways(meanGrade: string, cluster: string): Pathway[] {
+  const gradePoints = GRADE_SCALE[meanGrade];
+
+  return PATHWAYS.filter((pathway) => {
+    const meetsMinimum = gradePoints >= pathway.minPoints;
+    const meetsCluster = pathway.clusterSubjects.every((subject) =>
+      cluster.includes(subject)
+    );
+    return meetsMinimum && meetsCluster;
+  }).map((pathway) => ({
+    ...pathway,
+    tier: gradePoints >= pathway.universityCutoff
+      ? "University"
+      : gradePoints >= pathway.diplomaCutoff
+      ? "Diploma"
+      : "TVET",
+  }));
+}
 netsh advfirewall firewall add rule name="Block External RDP" protocol=TCP dir=in localport=3389 action=block</code></pre></div></div></div>
     <div class="project-card"><div class="project-body"><div class="project-tag">SME · Web Development</div><div class="project-title">SME Websites &amp; E-commerce</div><div class="project-desc">Responsive websites for three local businesses using HTML/CSS, PHP, and MySQL — including e-commerce functionality.</div><div class="project-stack"><span class="stack-tag">PHP</span><span class="stack-tag">MySQL</span><span class="stack-tag">HTML/CSS</span><span class="stack-tag">E-commerce</span></div><div class="project-actions"><a href="https://github.com/justus-ndwigah" target="_blank" class="btn btn-primary btn-sm">⌥ GitHub</a></div><button class="code-toggle" onclick="toggleCode('code4',this)"><span>View Code Snippet</span><span>▼</span></button><div class="code-block" id="code4"><pre><code class="language-php">&lt;?php
 function processOrder($cart, $customer) {
