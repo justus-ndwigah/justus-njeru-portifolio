@@ -265,6 +265,14 @@ function processOrder($cart, $customer) {
       <div class="design-body"><div class="design-category">Presentation Design</div><div class="design-title">Quarter 1 Business Presentation</div></div>
     </div>
 
+    <div class="design-card" onclick="openLightbox('lb2')">
+      <div class="design-img-wrap">
+        <img src="https://imgur.com/a/3FYh0SB" alt="Presentation" loading="lazy">
+        <div class="design-overlay"><span>View Full</span></div>
+      </div>
+      <div class="design-body"><div class="design-category">Product Design</div><div class="design-title">Product Marketing Presentation</div></div>
+    </div>
+    
     <div class="design-card" onclick="openLightbox('lb3')">
       <div class="design-img-wrap">
         <img src="https://i.imgur.com/usuOWv0.jpg" alt="Computer Classes Poster" loading="lazy">
@@ -314,69 +322,7 @@ function processOrder($cart, $customer) {
     <div class="cert-card"><div class="cert-icon">🏅</div><div><div class="cert-name">Graphic Design</div><div class="cert-issuer">Adobe / Canva</div></div></div>
   </div>
 </section>
-  <!-- ===== CONTACT FORM SECTION ===== -->
-<section id="contact">
-<section id="contact">
-  <h2>Contact Me</h2>
-  <p>Fill in the form below and I'll get back to you as soon as possible.</p>
-
-  <form action="https://formspree.io/f/xzdoepop" method="POST">
-    
-    <!-- Name -->
-    <div>
-      <label for="name">Your Name</label>
-      <input 
-        type="text" 
-        id="name"
-        name="name" 
-        placeholder="Enter your full name" 
-        required
-      />
-    </div>
-
-    <!-- Email -->
-    <div>
-      <label for="email">Your Email</label>
-      <input 
-        type="email" 
-        id="email"
-        name="email" 
-        placeholder="Enter your email address" 
-        required
-      />
-    </div>
-
-    <!-- Subject -->
-    <div>
-      <label for="subject">Subject</label>
-      <input 
-        type="text" 
-        id="subject"
-        name="subject" 
-        placeholder="What is this about?" 
-        required
-      />
-    </div>
-
-    <!-- Message -->
-    <div>
-      <label for="message">Message</label>
-      <textarea 
-        id="message"
-        name="message" 
-        rows="6" 
-        placeholder="Write your message here..." 
-        required
-      ></textarea>
-    </div>
-
-    <!-- Submit Button -->
-    <button type="submit">Send Message</button>
-
-  </form>
-</section>
-<!-- ===== END CONTACT FORM ===== -->
-  
+ 
   <div class="section-label">Connect</div>
   <h2 class="section-title">Let's Work<br>Together</h2>
   <div class="contact-grid">
