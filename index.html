@@ -104,11 +104,13 @@
   .contact-cta h3{font-family:'DM Serif Display',serif;font-size:1.75rem;margin-bottom:1rem}
   .contact-cta p{color:var(--muted);font-size:0.9rem;margin-bottom:2rem;line-height:1.8}
   footer{text-align:center;padding:2rem 4rem;border-top:1px solid var(--border);font-size:0.78rem;color:var(--muted);font-family:'DM Mono',monospace;position:relative;z-index:1}
-  .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:999;align-items:center;justify-content:center;padding:2rem}
+  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;justify-content:center;align-items:center;z-index:9999;}
+.lightbox.active{display:flex;}
   .lightbox.open{display:flex}
   .lightbox img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:0.5rem}
-  .lightbox-close{position:absolute;top:1.5rem;right:2rem;color:white;font-size:2rem;cursor:pointer;background:none;border:none;line-height:1}
+  .lightbox-close{position:absolute;top:20px;right:25px;font-size:40px;color:white;background:none;border:none;cursor:pointer;}
   .lightbox-close:hover{color:var(--accent)}
+  .pdf-viewer{width:95vw;height:92vh;border:none;background:#fff;border-radius:12px;}
   @media(max-width:900px){nav{padding:1rem 2rem}.nav-links{display:none}.hero{padding:6rem 2rem 4rem;flex-direction:column-reverse;gap:2rem}.hero-photo-wrap{width:160px;height:160px;margin:0 auto}.stats-bar{padding:1.5rem 2rem}section{padding:4rem 2rem}.contact-grid{grid-template-columns:1fr;gap:2rem}footer{padding:2rem}}
 </style>
 </head>
@@ -290,14 +292,16 @@ function processOrder($cart, $customer) {
     </div>
     
 <div class="design-card" onclick="openLightbox('lb6')">
-      <div class="design-img-wrap">
-        <iframe
-    src="CORTIN%20PRESENTATION.pdf"
-    class="pdf-viewer">
-</iframe>
-        <div class="design-overlay"><span>View Full</span></div>
-      </div>
-      <div class="design-body"><div class="design-category">Product Design</div><div class="design-title">Product Marketing Presentation</div></div>
+     <div class="design-img-wrap">
+    <img
+        src="https://i.imgur.com/9vy4pO4.jpg"
+        alt="Product Marketing Presentation"
+        loading="lazy">
+
+    <div class="design-overlay">
+        <span>View Full</span>
+    </div>
+</div>
     </div>
     
   </div>
@@ -309,7 +313,7 @@ function processOrder($cart, $customer) {
 <div class="lightbox" id="lb3" onclick="closeLightbox(this)"><button class="lightbox-close">✕</button><img src="https://i.imgur.com/usuOWv0.jpg" alt="Poster"></div>
 <div class="lightbox" id="lb4" onclick="closeLightbox(this)"><button class="lightbox-close">✕</button><img src="https://i.imgur.com/ICgGGDM.jpg" alt="Social"></div>
 <div class="lightbox" id="lb5" onclick="closeLightbox(this)"><button class="lightbox-close">✕</button><img src="https://i.imgur.com/9vy4pO4.jpg" alt="Certificate"></div>
-<div class="lightbox" id="lb6" onclick="closeLightbox(this)"><button class="lightbox-close">✕</button><iframe src="documents/cortin-presentation.pdf" class="pdf-viewer"></iframe></div>
+<div class="lightbox" id="lb6" onclick="closeLightbox(this)"><button class="lightbox-close">✕</button><img src="your-thumbnail.jpg" alt="Presentation"></div>
 
 <section id="certifications">
   <div class="section-label">Credentials</div>
