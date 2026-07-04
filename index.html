@@ -344,19 +344,34 @@ function processOrder($cart, $customer) {
       </div>
       <div class="design-body"><div class="design-category">Certificate Design</div><div class="design-title">Professional Completion Certificate</div></div>
     </div>
-    <div class="pdf-container">
+   <div class="design-card" onclick="openLightbox('lb6')">
 
-    <canvas id="pdf-canvas"></canvas>
+    <div class="design-img-wrap">
 
-    <div class="pdf-controls">
+        <img
+            src="https://i.imgur.com/9vy4pO4.jpg"
+            alt="Product Marketing Presentation"
+            loading="lazy">
 
-        <button onclick="prevPage()">◀ Prev</button>
-
-        <span id="page-info"></span>
-
-        <button onclick="nextPage()">Next ▶</button>
+        <div class="design-overlay">
+            <span>View Full</span>
+        </div>
 
     </div>
+
+    <div class="design-body">
+
+        <div class="design-category">
+            Product Design
+        </div>
+
+        <div class="design-title">
+            Product Marketing Presentation
+        </div>
+
+    </div>
+
+</div>
 
 </div>
   </div>
@@ -368,7 +383,7 @@ function processOrder($cart, $customer) {
 <div class="lightbox" id="lb3" onclick="closeLightbox(this)"><button class="lightbox-close">✕</button><img src="https://i.imgur.com/usuOWv0.jpg" alt="Poster"></div>
 <div class="lightbox" id="lb4" onclick="closeLightbox(this)"><button class="lightbox-close">✕</button><img src="https://i.imgur.com/ICgGGDM.jpg" alt="Social"></div>
 <div class="lightbox" id="lb5" onclick="closeLightbox(this)"><button class="lightbox-close">✕</button><img src="https://i.imgur.com/9vy4pO4.jpg" alt="Certificate"></div>
-<div class="lightbox" id="lb6" onclick="closeLightbox(this)"><button class="lightbox-close">✕</button><iframesrc="documents/cortin-presentation.pdf" class="pdf-viewer"> </iframe></div>
+<div class="lightbox" id="lb6" onclick="closeLightbox(this)"><button class="lightbox-close">✕</button><iframe src="documents/cortin-presentation.pdf" class="pdf-viewer"> </iframe></div>
 
 <section id="certifications">
   <div class="section-label">Credentials</div>
@@ -451,6 +466,7 @@ function processOrder($cart, $customer) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
   function toggleCode(id,btn){const b=document.getElementById(id);const a=btn.querySelector('span:last-child');if(b.classList.contains('open')){b.classList.remove('open');a.textContent='▼'}else{b.classList.add('open');a.textContent='▲';Prism.highlightAllUnder(b)}}
   function openLightbox(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden'}
@@ -458,47 +474,28 @@ function processOrder($cart, $customer) {
   const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.15});
   document.querySelectorAll('.timeline-item').forEach(el=>obs.observe(el));
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>pdfjsLib.GlobalWorkerOptions.workerSrc =
 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
 let pdfDoc = null;
 let pageNum = 1;
-
 const canvas = document.getElementById('pdf-canvas');
 const ctx = canvas.getContext('2d');
-
 pdfjsLib.getDocument('documents/cortin-presentation.pdf').promise.then(pdf=>{
-
     pdfDoc = pdf;
-
-    renderPage(pageNum);
-
+  renderPage(pageNum);
 });
-
 function renderPage(num){
-
     pdfDoc.getPage(num).then(page=>{
-
         const viewport = page.getViewport({scale:1.5});
-
         canvas.height = viewport.height;
-
         canvas.width = viewport.width;
-
         page.render({
-
-            canvasContext:ctx,
-
+           canvasContext:ctx,
             viewport:viewport
-
         });
-
         document.getElementById("page-info").innerHTML =
         "Page "+num+" of "+pdfDoc.numPages;
-
     });
-
 }
 
 function nextPage(){
