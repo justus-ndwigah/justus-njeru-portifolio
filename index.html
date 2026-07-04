@@ -110,6 +110,60 @@
   .lightbox img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:0.5rem}
   .lightbox-close{position:absolute;top:20px;right:25px;font-size:40px;color:white;background:none;border:none;cursor:pointer;}
   .lightbox-close:hover{color:var(--accent)}
+  .pdf-container{
+
+    width:90vw;
+    height:90vh;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+#pdf-canvas{
+
+    flex:1;
+
+    width:100%;
+
+    background:#f4f4f4;
+
+}
+
+.pdf-controls{
+
+    height:60px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:20px;
+
+    border-top:1px solid #ddd;
+
+}
+
+.pdf-controls button{
+
+    padding:10px 20px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+}
   .pdf-viewer{width:95vw;height:92vh;border:none;background:#fff;border-radius:12px;}
   @media(max-width:900px){nav{padding:1rem 2rem}.nav-links{display:none}.hero{padding:6rem 2rem 4rem;flex-direction:column-reverse;gap:2rem}.hero-photo-wrap{width:160px;height:160px;margin:0 auto}.stats-bar{padding:1.5rem 2rem}section{padding:4rem 2rem}.contact-grid{grid-template-columns:1fr;gap:2rem}footer{padding:2rem}}
 </style>
@@ -290,7 +344,21 @@ function processOrder($cart, $customer) {
       </div>
       <div class="design-body"><div class="design-category">Certificate Design</div><div class="design-title">Professional Completion Certificate</div></div>
     </div>
-    
+    <div class="pdf-container">
+
+    <canvas id="pdf-canvas"></canvas>
+
+    <div class="pdf-controls">
+
+        <button onclick="prevPage()">◀ Prev</button>
+
+        <span id="page-info"></span>
+
+        <button onclick="nextPage()">Next ▶</button>
+
+    </div>
+
+</div>
   </div>
 </section>
 
@@ -390,5 +458,67 @@ function processOrder($cart, $customer) {
   const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.15});
   document.querySelectorAll('.timeline-item').forEach(el=>obs.observe(el));
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>pdfjsLib.GlobalWorkerOptions.workerSrc =
+'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+let pdfDoc = null;
+let pageNum = 1;
+
+const canvas = document.getElementById('pdf-canvas');
+const ctx = canvas.getContext('2d');
+
+pdfjsLib.getDocument('documents/cortin-presentation.pdf').promise.then(pdf=>{
+
+    pdfDoc = pdf;
+
+    renderPage(pageNum);
+
+});
+
+function renderPage(num){
+
+    pdfDoc.getPage(num).then(page=>{
+
+        const viewport = page.getViewport({scale:1.5});
+
+        canvas.height = viewport.height;
+
+        canvas.width = viewport.width;
+
+        page.render({
+
+            canvasContext:ctx,
+
+            viewport:viewport
+
+        });
+
+        document.getElementById("page-info").innerHTML =
+        "Page "+num+" of "+pdfDoc.numPages;
+
+    });
+
+}
+
+function nextPage(){
+
+    if(pageNum>=pdfDoc.numPages)return;
+
+    pageNum++;
+
+    renderPage(pageNum);
+
+}
+
+function prevPage(){
+
+    if(pageNum<=1)return;
+
+    pageNum--;
+
+    renderPage(pageNum);
+
+}</script>
 </body>
 </html>
