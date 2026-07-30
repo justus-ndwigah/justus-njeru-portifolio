@@ -232,31 +232,14 @@ function getEligiblePathways(meanGrade: string, cluster: string): Pathway[] {
   }));
 }
 netsh advfirewall firewall add rule name="Block External RDP" protocol=TCP dir=in localport=3389 action=block</code></pre></div></div></div>
-    <div class="project-card"><div class="project-body"><div class="project-tag">SME · Web Development</div><div class="project-title">SME Websites &amp; E-commerce</div><div class="project-desc">Responsive websites for three local businesses using HTML/CSS, PHP, and MySQL — including e-commerce functionality.</div><div class="project-stack"><span class="stack-tag">PHP</span><span class="stack-tag">MySQL</span><span class="stack-tag">HTML/CSS</span><span class="stack-tag">E-commerce</span></div><div class="project-actions"><a href="https://github.com/justus-ndwigah" target="_blank" class="btn btn-primary btn-sm">⌥ GitHub</a></div><button class="code-toggle" onclick="toggleCode('code4',this)"><span>View Code Snippet</span><span>▼</span></button><div class="code-block" id="code4"><pre><code class="language-php">&lt;?php
-function processOrder($cart, $customer) {
-  global $db;
-  $db->beginTransaction();
-  try {
-    $stmt = $db->prepare("INSERT INTO orders (customer_id,total,status) VALUES (?,?,?)");
-    $stmt->execute([$customer['id'], calculateTotal($cart), 'pending']);
-    $db->commit();
-    return $db->lastInsertId();
-  } catch(Exception $e){$db->rollBack();return false;}
-}</code></pre></div></div></div>
+    <div class="project-card"><div class="project-body"><div class="project-tag">Education · Web Development</div><div class="project-title">School Websites &amp; Edu-Tech</div><div class="project-desc">Responsive websites for St Thomas Kavingoni Senior School using HTML5/CSS, PHP</div><div class="project-stack"><span class="stack-tag">PHP</span><span class="stack-tag">HTML5/CSS</span><span class="stack-tag">Education-Tech</span></div><div class="project-actions"><a href="https://justus-ndwigah.github.io/website-kavingoni-ict/" target="_blank" class="btn btn-primary btn-sm">⌥ GitHub</a></div><button class="code-toggle" onclick="toggleCode('code4',this)"><span>View Website Snippet</span><span>▼</span></button><div class="code-block" id="code4"><pre><code class="language-php">&lt;  A modern, responsive school website designed and developed to
+            showcase St. Thomas Kavingoni Senior School's academic excellence,
+            ICT innovation, student life, departments, achievements and
+            school community. The website features an interactive image
+            slideshow, organised dropdown navigation, school gallery,
+            contact information and an integrated Google Maps location.
 
-        <div class="project-card"><div class="project-body"><div class="project-tag">Education· Website</div><div class="project-title">School Website &amp; Education-Tech</div><div class="project-desc">Responsive websites for St Thomas Kavingoni Senior School using HTML/CSS, and PHP </div><div class="project-stack"><span class="stack-tag">PHP</span><span class="stack-tag">MySQL</span><span class="stack-tag">HTML/CSS</span><span class="stack-tag">E-commerce</span></div><div class="project-actions"><a href="https://justus-ndwigah.github.io/website-kavingoni-ict/
-Last deployed by @justus-ndwigah justus-ndwigah 16 minutes ago" target="_blank" class="btn btn-primary btn-sm">⌥ GitHub</a></div><button class="code-toggle" onclick="toggleCode('code4',this)"><span>View Code Snippet</span><span>▼</span></button><div class="code-block" id="code4"><pre><code class="language-php">&lt;?php
-function processOrder($cart, $customer) {
-  global $db;
-  $db->beginTransaction();
-  try {
-    $stmt = $db->prepare("INSERT INTO orders (customer_id,total,status) VALUES (?,?,?)");
-    $stmt->execute([$customer['id'], calculateTotal($cart), 'pending']);
-    $db->commit();
-    return $db->lastInsertId();
-  } catch(Exception $e){$db->rollBack();return false;}
 }</code></pre></div></div></div>
-    
   </div>
 </section>
 
