@@ -182,43 +182,9 @@
   <div class="projects-grid">
   <div class="project-card">
     <div class="project-body">
-        <div class="project-tag">Church System</div>
-
-        <div class="project-title">Church Flow System</div>
-
-        <div class="project-desc">
-            PHP/MySQL web application for church records management
-            and timely church updates.
-        </div>
-
-        <div class="project-stack">
-            <span class="stack-tag">PHP</span>
-            <span class="stack-tag">MySQL</span>
-            <span class="stack-tag">HTML/CSS</span>
-        </div>
-
-        <div class="project-actions">
-            <a 
-                href="https://churchflowsystem.rf.gd/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="btn btn-primary btn-sm"
-            >
-                🌐 Visit Live System
-            </a>
-        </div>
-
-        <button class="code-toggle" onclick="toggleCode('code2',this)">
-            <span>View Code Snippet</span>
-            <span>▼</span>
-        </button>
-
-        <div class="code-block" id="code2">
-            <pre><code class="language-php">&lt;?php</code></pre>
-        </div>
-    </div>
-</div>
-function getStudentMarks($student_id, $term) {
+        <div class="project-tag">Church System</div><div class="project-title">Church Flow System</div> <div class="project-desc"> PHP/MySQL web application for church records management and timely church updates.</div><div class="project-stack">
+            <span class="stack-tag">PHP</span><span class="stack-tag">MySQL</span><span class="stack-tag">HTML/CSS</span></div> <div class="project-actions"><a  href="https://churchflowsystem.rf.gd/"  target="_blank"  rel="noopener noreferrer" class="btn btn-primary btn-sm">  🌐 Visit Live System</a></div><button class="code-toggle" onclick="toggleCode('code2',this)">
+            <span>View Code Snippet</span><span>▼</span></button><div class="code-block" id="code2"><pre><code class="language-php">&lt;?php function getStudentMarks($student_id, $term) {
   $sql = "SELECT s.subject_name, m.marks, m.grade
           FROM marks m JOIN subjects s ON m.subject_id = s.id
           WHERE m.student_id = ? AND m.term = ?";
@@ -226,6 +192,7 @@ function getStudentMarks($student_id, $term) {
   $stmt->execute([$student_id, $term]);
   return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }</code></pre></div></div></div>
+
  <div class="project-card"><div class="project-body"><div class="project-tag">Education · Web App</div><div class="project-title">School Management System</div><div class="project-desc">PHP/MySQL web app for student records management and give school updates to the community.</div><div class="project-desc">ALERT!!!!APP Coming Soon...</div><div class="project-stack"><span class="stack-tag">PHP</span><span class="stack-tag">MySQL</span><span class="stack-tag">HTML/CSS</span></div><div class="project-actions"><a href=" https://justus-ndwigah.github.io/kavingoni-sec-website/" target="_blank" class="btn btn-primary btn-sm">⌥ GitHub</a></div><button class="code-toggle" onclick="toggleCode('code2',this)"><span>View Code Snippet</span><span>▼</span></button><div class="code-block" id="code2"><pre><code class="language-php">&lt;?php
 function getStudentMarks($student_id, $term) {
   $sql = "SELECT s.subject_name, m.marks, m.grade
