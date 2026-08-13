@@ -112,6 +112,29 @@
   .lightbox-close:hover{color:var(--accent)}
   .pdf-viewer{width:100vw;height:100vh;border:none;}
   @media(max-width:900px){nav{padding:1rem 2rem}.nav-links{display:none}.hero{padding:6rem 2rem 4rem;flex-direction:column-reverse;gap:2rem}.hero-photo-wrap{width:160px;height:160px;margin:0 auto}.stats-bar{padding:1.5rem 2rem}section{padding:4rem 2rem}.contact-grid{grid-template-columns:1fr;gap:2rem}footer{padding:2rem}}
+  .social-links {
+  display: flex;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.social-links a {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid #00d4b4;
+  border-radius: 50%;
+  color: #00d4b4;
+  font-size: 21px;
+  transition: 0.2s ease;
+}
+
+.social-links a:hover {
+  background: #00d4b4;
+  color: #07101f;
+  transform: translateY(-3px);
+}
 </style>
 </head>
 <body>
@@ -335,7 +358,7 @@ netsh advfirewall firewall add rule name="Block External RDP" protocol=TCP dir=i
     <div class="cert-card"><div class="cert-icon">🏅</div><div><div class="cert-name">Microsoft Office, Microsoft 365 & Copilot AI Specialist</div><div class="cert-issuer">Camara Education</div></div></div>
     <div class="cert-card"><div class="cert-icon">🏅</div><div><div class="cert-name">Network Admin (Practical)</div><div class="cert-issuer">Cetiny Nets</div></div></div>
     <div class="cert-card"><div class="cert-icon">🏅</div><div><div class="cert-name">Graphic Design</div><div class="cert-issuer">Adobe / Canva</div></div></div>
-     <div class="cert-card"><div class="cert-icon">🏅</div><div><div class="cert-name">Web Development & Design</div><div class="cert-issuer">Infotact Solutions</div></div></div>
+   <div class="cert-card"><div class="cert-icon">🏅</div><div><div class="cert-name">Web Development & Design</div><div class="cert-issuer">Infotact Solutions</div></div></div>
   </div>
 </section>
   
@@ -375,6 +398,20 @@ netsh advfirewall firewall add rule name="Block External RDP" protocol=TCP dir=i
         Nairobi, Kenya
       </div>
 
+<div class="social-links">
+  <a href="https://wa.me/254741209140" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+  <a href="https://www.linkedin.com/in/justus-njeru" target="_blank" rel="noopener" aria-label="LinkedIn">
+    <i class="fa-brands fa-linkedin-in"></i>
+  </a>
+  <a href="YOUR_TIKTOK_PROFILE_URL" target="_blank" rel="noopener" aria-label="TikTok">
+    <i class="fa-brands fa-tiktok"></i>
+  </a>
+  <a href="YOUR_FACEBOOK_PROFILE_URL" target="_blank" rel="noopener" aria-label="Facebook">
+    <i class="fa-brands fa-facebook-f"></i>
+  </a>
+</div>
     </div>
 
     <div class="contact-cta">
