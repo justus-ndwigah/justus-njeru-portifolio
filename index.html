@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ndwiga Njeru Justus — ICT Professional</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 <style>
   :root{--bg:#0a0f1e;--surface:#111827;--surface2:#1a2235;--accent:#00d4aa;--accent2:#3b82f6;--text:#e8edf5;--muted:#8899b0;--border:rgba(0,212,170,0.15);--glow:rgba(0,212,170,0.08)}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -112,21 +112,22 @@
   .lightbox-close:hover{color:var(--accent)}
   .pdf-viewer{width:100vw;height:100vh;border:none;}
   @media(max-width:900px){nav{padding:1rem 2rem}.nav-links{display:none}.hero{padding:6rem 2rem 4rem;flex-direction:column-reverse;gap:2rem}.hero-photo-wrap{width:160px;height:160px;margin:0 auto}.stats-bar{padding:1.5rem 2rem}section{padding:4rem 2rem}.contact-grid{grid-template-columns:1fr;gap:2rem}footer{padding:2rem}}
-  .social-links {
+ .social-links {
   display: flex;
   gap: 14px;
   margin-top: 24px;
 }
 
 .social-links a {
+  width: 48px;
+  height: 48px;
   display: grid;
   place-items: center;
-  width: 46px;
-  height: 46px;
   border: 1px solid #00d4b4;
   border-radius: 50%;
   color: #00d4b4;
-  font-size: 21px;
+  font-size: 22px;
+  text-decoration: none;
   transition: 0.2s ease;
 }
 
@@ -373,46 +374,58 @@ netsh advfirewall firewall add rule name="Block External RDP" protocol=TCP dir=i
 
   <div class="contact-grid">
 
-    <div class="contact-info">
+   <div class="contact-info">
 
-      <a href="tel:+254741209140" class="contact-item">
-        <span class="contact-icon">📞</span>
-        +254 741 209 140
-      </a>
-
-      <a href="mailto:justusndwigah@gmail.com" class="contact-item">
-        <span class="contact-icon">✉️</span>
-        justusndwigah@gmail.com
-      </a>
-
-      <a href="https://linkedin.com/in/justus-njeru"
-         target="_blank"
-         rel="noopener noreferrer"
-         class="contact-item">
-        <span class="contact-icon">💼</span>
-        linkedin.com/in/justus-njeru
-      </a>
-
-      <div class="contact-item static">
-        <span class="contact-icon">📍</span>
-        Nairobi, Kenya
-      </div>
-
-<div class="social-links">
-  <a href="https://wa.me/254741209140" target="_blank" rel="noopener" aria-label="WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
+  <a href="tel:+254741209140" class="contact-item">
+    <span class="contact-icon">📞</span>
+    +254 741 209 140
   </a>
-  <a href="https://www.linkedin.com/in/justus-njeru" target="_blank" rel="noopener" aria-label="LinkedIn">
-    <i class="fa-brands fa-linkedin-in"></i>
+
+  <a href="mailto:justusndwigah@gmail.com" class="contact-item">
+    <span class="contact-icon">✉️</span>
+    justusndwigah@gmail.com
   </a>
-  <a href="YOUR_TIKTOK_PROFILE_URL" target="_blank" rel="noopener" aria-label="TikTok">
-    <i class="fa-brands fa-tiktok"></i>
-  </a>
-  <a href="YOUR_FACEBOOK_PROFILE_URL" target="_blank" rel="noopener" aria-label="Facebook">
-    <i class="fa-brands fa-facebook-f"></i>
-  </a>
+
+  <div class="contact-item static">
+    <span class="contact-icon">📍</span>
+    Nairobi, Kenya
+  </div>
+
+  <div class="social-links" aria-label="Social media links">
+    <a href="https://wa.me/254741209140"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Chat with me on WhatsApp"
+       title="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <a href="https://www.linkedin.com/in/justus-njeru"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Connect with me on LinkedIn"
+       title="LinkedIn">
+      <i class="fa-brands fa-linkedin-in"></i>
+    </a>
+
+    <a href="PASTE-YOUR-TIKTOK-LINK-HERE"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Follow me on TikTok"
+       title="TikTok">
+      <i class="fa-brands fa-tiktok"></i>
+    </a>
+
+    <a href="PASTE-YOUR-FACEBOOK-LINK-HERE"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Follow me on Facebook"
+       title="Facebook">
+      <i class="fa-brands fa-facebook-f"></i>
+    </a>
+  </div>
+
 </div>
-    </div>
 
     <div class="contact-cta">
       <h3>Open to Corporate &amp;<br>Government Roles</h3>
