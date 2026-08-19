@@ -268,6 +268,41 @@ netsh advfirewall firewall add rule name="Block External RDP" protocol=TCP dir=i
             contact information and an integrated Google Maps location.
 
 }</code></pre></div></div></div>
+    <div class="project-card">
+    <div class="project-body">
+<div class="project-tag">Job Application System</div>
+<div class="project-title">Smart WEb Application Form</div>
+<div class="project-desc">
+            A professional web-based recruitment application system designed to
+            collect, validate, review, and securely submit job applications.
+            The system supports applicant information, education and experience,
+            referee details, document uploads, automatic draft saving, and
+            application confirmation emails.
+        </div><div class="project-stack"><span class="stack-tag">HTML</span><span class="stack-tag">CSS</span><span class="stack-tag">JavaScript</span><span class="stack-tag">Google Apps Script</span><span class="stack-tag">Google Sheets</span><span class="stack-tag">Google Drive</span></div>
+<div class="project-actions"><a href=" https://justus-ndwigah.github.io/online-application-form/" target="_blank"rel="noopener noreferrer"class="btn btn-primary btn-sm">🌐 Visit Live Application Form</a></div>
+      <button class="code-toggle" onclick="toggleCode('code2',this)"><span>View Code Snippet</span><span>▼</span></button>
+<div class="code-block" id="code2"><pre><code class="language-javascript">// Automatic application draft saving
+const DRAFT_KEY = 'SmartWebEmploymentApplicationDraft';
+function saveDraft() {
+    const data = {};
+    document.querySelectorAll(
+        'input: not([type="file"]), select, textarea'
+    ).forEach(field => {
+        if (field.name) {
+            data[field.name] = field.value;
+        }});
+data.currentSection = current;localStorage.setItem( DRAFT_KEY, JSON.stringify(data)
+    );}
+// Restore applicant information after page refresh
+function restoreDraft() {
+    const saved = localStorage.getItem(DRAFT_KEY);
+    if (!saved) return;
+    const data = JSON.parse(saved);
+    Object.keys(data).forEach(key => {
+        const field = document.querySelector(
+            `[name="${key}"]`
+        );
+        if (field) {field.value = data[key];}});}</code></pre></div></div></div>
   </div>
 </section>
 
