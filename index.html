@@ -35,15 +35,59 @@
   .btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
   .btn-sm{padding:0.5rem 1.1rem;font-size:0.8rem;border-radius:0.35rem}
   .stats-bar{display:flex;gap:2rem;padding:2rem 4rem;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1;flex-wrap:wrap}
-  /* ================================
-   CONTINUOUS STATS SLIDER
-   ================================ */
-.stats-bar {width: 100%;overflow: hidden;position: relative;}
-.stats-track {display: flex; width: max-content;align-items: center;animation: statsSlide 20s linear infinite;}
-.stat-item {flex: 0 0 auto;min-width: 220px;padding: 20px 35px;text-align: center;}
-/* Continuous right-to-left movement */
-@keyframes statsSlide { from {transform: translateX(0);}
-to {transform: translateX(-50%);}}
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: inline-block;
+  font-size: 2.5rem;
+  font-weight: 800;
+  transform: scale(1);
+  transition: transform 0.2s ease;
+}
+
+/* Subtle popping effect */
+.stat-number.pop {
+  animation: statPop 0.35s ease-out;
+}
+
+@keyframes statPop {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.18);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.stat-label {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-number {
+    font-size: 2rem;
+  }
+}
   .stat-item{text-align:center;flex:1;min-width:100px}
   .stat-number{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--accent);display:block;line-height:1}
   .stat-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em}
@@ -159,18 +203,10 @@ to {transform: translateX(-50%);}}
 </section>
 
 <div class="stats-bar">
-  <div class="stats-track">
-
-    <!-- First set -->
-    <div class="stat-item"><span class="stat-number">5+</span><span class="stat-label">Years Experience</span></div>
-    <div class="stat-item"><span class="stat-number">10+</span><span class="stat-label">SME Clients Served</span></div>
-    <div class="stat-item"><span class="stat-number">30+</span><span class="stat-label">Staff Trained</span></div>
-    <div class="stat-item"><span class="stat-number">35%</span><span class="stat-label">Downtime Reduction</span></div>
-    <!-- Duplicate set for seamless continuous scrolling -->
-    <div class="stat-item"><span class="stat-number">5+</span><span class="stat-label">Years Experience</span></div>
-    <div class="stat-item"><span class="stat-number">10+</span><span class="stat-label">SME Clients Served</span></div>
-    <div class="stat-item"><span class="stat-number">30+</span><span class="stat-label">Staff Trained</span></div>
-    <div class="stat-item"><span class="stat-number">35%</span><span class="stat-label">Downtime Reduction</span></div></div>
+  <div class="stat-item"><span class="stat-number" data-target="5">5+</span><span class="stat-label">Years Experience</span></div>
+  <div class="stat-item"><span class="stat-number" data-target="10">10+</span><span class="stat-label">SME Clients Served</span></div>
+  <div class="stat-item"><span class="stat-number" data-target="30">30+</span><span class="stat-label">Staff Trained</span></div>
+  <div class="stat-item"><span class="stat-number" data-target="35">35%</span><span class="stat-label">Downtime Reduction</span></div>
 </div>
 
 <section class="skills-section" id="skills">
@@ -731,6 +767,81 @@ function restoreDraft() {
   function closeLightbox(el){el.classList.remove('open');document.body.style.overflow=''}
   const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.15});
   document.querySelectorAll('.timeline-item').forEach(el=>obs.observe(el));
+</script>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const stats = document.querySelectorAll(".stat-number");
+
+  const observer = new IntersectionObserver(function (entries, observer) {
+
+    entries.forEach(function (entry) {
+
+      if (entry.isIntersecting) {
+
+        stats.forEach(function (stat, index) {
+
+          const target = parseInt(stat.dataset.target);
+          const original = stat.textContent;
+          const suffix = original.includes("%") ? "%" : "+";
+
+          let current = 0;
+
+          setTimeout(function () {
+
+            const duration = 1200;
+            const start = performance.now();
+
+            function countUp(time) {
+
+              const progress = Math.min(
+                (time - start) / duration,
+                1
+              );
+
+              const value = Math.floor(
+                progress * target
+              );
+
+              stat.textContent = value + suffix;
+
+              if (progress < 1) {
+                requestAnimationFrame(countUp);
+              } else {
+
+                stat.textContent = target + suffix;
+
+                // Small final pop
+                stat.classList.remove("pop");
+
+                void stat.offsetWidth;
+
+                stat.classList.add("pop");
+              }
+            }
+
+            requestAnimationFrame(countUp);
+
+          }, index * 200);
+
+        });
+
+        observer.unobserve(entry.target);
+      }
+
+    });
+
+  }, {
+    threshold: 0.5
+  });
+
+  const statsBar = document.querySelector(".stats-bar");
+
+  if (statsBar) {
+    observer.observe(statsBar);
+  }
+
+});
 </script>
  
 </body>
