@@ -35,6 +35,15 @@
   .btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
   .btn-sm{padding:0.5rem 1.1rem;font-size:0.8rem;border-radius:0.35rem}
   .stats-bar{display:flex;gap:2rem;padding:2rem 4rem;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1;flex-wrap:wrap}
+  /* ================================
+   CONTINUOUS STATS SLIDER
+   ================================ */
+.stats-bar {width: 100%;overflow: hidden;position: relative;}
+.stats-track {display: flex; width: max-content;align-items: center;animation: statsSlide 20s linear infinite;}
+.stat-item {flex: 0 0 auto;min-width: 220px;padding: 20px 35px;text-align: center;}
+/* Continuous right-to-left movement */
+@keyframes statsSlide { from {transform: translateX(0);}
+to {transform: translateX(-50%);}}
   .stat-item{text-align:center;flex:1;min-width:100px}
   .stat-number{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--accent);display:block;line-height:1}
   .stat-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em}
@@ -114,30 +123,9 @@
   .lightbox-close:hover{color:var(--accent)}
   .pdf-viewer{width:100vw;height:100vh;border:none;}
   @media(max-width:900px){nav{padding:1rem 2rem}.nav-links{display:none}.hero{padding:6rem 2rem 4rem;flex-direction:column-reverse;gap:2rem}.hero-photo-wrap{width:160px;height:160px;margin:0 auto}.stats-bar{padding:1.5rem 2rem}section{padding:4rem 2rem}.contact-grid{grid-template-columns:1fr;gap:2rem}footer{padding:2rem}}
- .social-links {
-  display: flex;
-  gap: 14px;
-  margin-top: 24px;
-}
-
-.social-links a {
-  width: 48px;
-  height: 48px;
-  display: grid;
-  place-items: center;
-  border: 1px solid #00d4b4;
-  border-radius: 50%;
-  color: #00d4b4;
-  font-size: 22px;
-  text-decoration: none;
-  transition: 0.2s ease;
-}
-
-.social-links a:hover {
-  background: #00d4b4;
-  color: #07101f;
-  transform: translateY(-3px);
-}
+ .social-links {display: flex;gap: 14px;margin-top: 24px;}
+.social-links a {width: 48px;height: 48px;display: grid;place-items: center;border: 1px solid #00d4b4;border-radius: 50%;color: #00d4b4;font-size: 22px;text-decoration: none;transition: 0.2s ease;}
+.social-links a:hover {background: #00d4b4;color: #07101f;transform: translateY(-3px);}
 </style>
 </head>
 <body>
@@ -171,10 +159,18 @@
 </section>
 
 <div class="stats-bar">
-  <div class="stat-item"><span class="stat-number">5+</span><span class="stat-label">Years Experience</span></div>
-  <div class="stat-item"><span class="stat-number">10+</span><span class="stat-label">SME Clients Served</span></div>
-  <div class="stat-item"><span class="stat-number">30+</span><span class="stat-label">Staff Trained</span></div>
-  <div class="stat-item"><span class="stat-number">35%</span><span class="stat-label">Downtime Reduction</span></div>
+  <div class="stats-track">
+
+    <!-- First set -->
+    <div class="stat-item"><span class="stat-number">5+</span><span class="stat-label">Years Experience</span></div>
+    <div class="stat-item"><span class="stat-number">10+</span><span class="stat-label">SME Clients Served</span></div>
+    <div class="stat-item"><span class="stat-number">30+</span><span class="stat-label">Staff Trained</span></div>
+    <div class="stat-item"><span class="stat-number">35%</span><span class="stat-label">Downtime Reduction</span></div>
+    <!-- Duplicate set for seamless continuous scrolling -->
+    <div class="stat-item"><span class="stat-number">5+</span><span class="stat-label">Years Experience</span></div>
+    <div class="stat-item"><span class="stat-number">10+</span><span class="stat-label">SME Clients Served</span></div>
+    <div class="stat-item"><span class="stat-number">30+</span><span class="stat-label">Staff Trained</span></div>
+    <div class="stat-item"><span class="stat-number">35%</span><span class="stat-label">Downtime Reduction</span></div></div>
 </div>
 
 <section class="skills-section" id="skills">
@@ -211,193 +207,91 @@
     <!-- CHURCH FLOW SYSTEM -->
     <div class="project-card">
       <div class="project-body">
-
         <div class="project-tag">Church System</div>
-
         <div class="project-title">Church Flow System</div>
-
         <div class="project-desc">
           PHP/MySQL web application for church records management and timely church updates.
         </div>
-
-        <div class="project-stack">
-          <span class="stack-tag">PHP</span>
-          <span class="stack-tag">MySQL</span>
-          <span class="stack-tag">HTML/CSS</span>
-        </div>
-
-        <div class="project-actions">
-          <a href="https://churchflowsystem.unaux.com/"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="btn btn-primary btn-sm">
-            🌐 Visit Live System
-          </a>
-        </div>
-
-        <button class="code-toggle"
-                onclick="toggleCode('code-church',this)">
-          <span>View Code Snippet</span>
-          <span>▼</span>
-        </button>
-
-        <div class="code-block" id="code-church">
-          <pre><code class="language-php">&lt;?php
-
+        <div class="project-stack"><span class="stack-tag">PHP</span><span class="stack-tag">MySQL</span><span class="stack-tag">HTML/CSS</span></div>
+       <div class="project-actions">
+          <a href="https://churchflowsystem.unaux.com/"target="_blank"rel="noopener noreferrer"class="btn btn-primary btn-sm">🌐 Visit Live System</a></div>
+        <button class="code-toggle"onclick="toggleCode('code-church',this)"><span>View Code Snippet</span><span>▼</span></button>
+        <div class="code-block" id="code-church"><pre><code class="language-php">&lt;?php
 function getChurchMembers($status = 'active') {
-
     $sql = "SELECT id, full_name, phone, email, ministry, status
             FROM members
             WHERE status = ?
             ORDER BY full_name ASC";
-
     $stmt = $this->db->prepare($sql);
     $stmt->execute([$status]);
-
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-
 // Retrieve active church members
 $members = getChurchMembers('active');
 
-?&gt;</code></pre>
-        </div>
-
-      </div>
-    </div>
-
+?&gt;</code></pre></div></div></div>
 
     <!-- SCHOOL MANAGEMENT SYSTEM -->
     <div class="project-card">
       <div class="project-body">
-
         <div class="project-tag">Education · Web App</div>
-
         <div class="project-title">School Management System</div>
-
         <div class="project-desc">
           PHP/MySQL web app for student records management and school updates to the community.
         </div>
-
-        <div class="project-desc">
-          ALERT!!!! APP Coming Soon...
-        </div>
-
-        <div class="project-stack">
-          <span class="stack-tag">PHP</span>
-          <span class="stack-tag">MySQL</span>
-          <span class="stack-tag">HTML/CSS</span>
-        </div>
-
+        <div class="project-stack"><span class="stack-tag">PHP</span><span class="stack-tag">MySQL</span><span class="stack-tag">HTML/CSS</span></div>
         <div class="project-actions">
-          <a href="https://justus-ndwigah.github.io/kavingoni-sec-website/"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="btn btn-primary btn-sm">
-            🌐 View Website
-          </a>
-        </div>
-
-        <button class="code-toggle"
-                onclick="toggleCode('code-school',this)">
-          <span>View Code Snippet</span>
-          <span>▼</span>
-        </button>
-
-        <div class="code-block" id="code-school">
-          <pre><code class="language-php">&lt;?php
-
+          <a href="https://justus-ndwigah.github.io/kavingoni-sec-website/"target="_blank"rel="noopener noreferrer"class="btn btn-primary btn-sm">🌐 View Website</a></div>
+      <button class="code-toggle"onclick="toggleCode('code-school',this)"><span>View Code Snippet</span><span>▼</span></button>
+      <div class="code-block" id="code-school"><pre><code class="language-php">&lt;?php
 function getStudentMarks($student_id, $term) {
-
     $sql = "SELECT s.subject_name, m.marks, m.grade
             FROM marks m
             JOIN subjects s ON m.subject_id = s.id
             WHERE m.student_id = ? AND m.term = ?";
-
     $stmt = $this->db->prepare($sql);
     $stmt->execute([$student_id, $term]);
-
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-
-?&gt;</code></pre>
-        </div>
-
-      </div>
-    </div>
-
+?&gt;</code></pre></div></div></div>
 
     <!-- GIT & GITHUB -->
     <div class="project-card">
       <div class="project-body">
-
         <div class="project-tag">
           Development · Version Control
         </div>
-
         <div class="project-title">
           Git &amp; GitHub — Version Control &amp; Collaboration
         </div>
-
         <div class="project-desc">
           Practical experience using Git and GitHub for source code management,
           version control, branching, commits, remote repositories, collaboration,
           and maintaining organized software development workflows.
         </div>
 
-        <div class="project-stack">
-          <span class="stack-tag">Git</span>
-          <span class="stack-tag">GitHub</span>
-          <span class="stack-tag">Git CLI</span>
-          <span class="stack-tag">Version Control</span>
-        </div>
-
+        <div class="project-stack"><span class="stack-tag">Git</span><span class="stack-tag">GitHub</span><span class="stack-tag">Git CLI</span><span class="stack-tag">Version Control</span></div>
         <div class="project-actions">
-          <a href="https://github.com/justus-ndwigah"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="btn btn-primary btn-sm">
-            ⌥ View GitHub
-          </a>
-        </div>
-
-        <button class="code-toggle"
-                onclick="toggleCode('code-git',this)">
-          <span>View Git Workflow</span>
-          <span>▼</span>
-        </button>
-
-        <div class="code-block" id="code-git">
-          <pre><code class="language-bash"># Clone a remote repository
+          <a href="https://github.com/justus-ndwigah"target="_blank"rel="noopener noreferrer"class="btn btn-primary btn-sm">⌥ View GitHub</a></div>
+        <button class="code-toggle"onclick="toggleCode('code-git',this)"><span>View Git Workflow</span><span>▼</span></button>
+        <div class="code-block" id="code-git"><pre><code class="language-bash"># Clone a remote repository
 git clone https://github.com/username/repository.git
-
 # Check repository status
 git status
-
 # Create a feature branch
 git checkout -b feature/new-feature
-
 # Stage changes
 git add .
-
 # Commit changes
 git commit -m "Add new feature"
-
 # Push changes to GitHub
 git push -u origin feature/new-feature
-
 # Update local repository
 git pull origin main
-
 # Switch to main branch
 git checkout main
-
 # Merge feature branch
-git merge feature/new-feature</code></pre>
-        </div>
-
-      </div>
-    </div>
+git merge feature/new-feature</code></pre></div></div></div>
 
 
     <!-- UNIPATHKE -->
