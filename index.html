@@ -502,7 +502,7 @@ function restoreDraft() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
 <script>
-  function toggleCode(id,btn){const b=document.getElementById(id);const a=btn.querySelector('span:last-child');if(b.classList.contains('open')){b.classList.remove('open');a.textContent='▼'}else{b.classList.add('open');a.textContent='▲';Prism.highlightAllUnder(b)}}
+  function toggleCode(id, button){const codeBlock = document.getElementById(id);if (!codeBlock) {console.error("Code block not found:", id);return;}codeBlock.classList.toggle("show");const text = button.querySelector("span:first-child");const arrow = button.querySelector("span:last-child");if (codeBlock.classList.contains("show")) {text.textContent = "Hide Code Snippet";arrow.textContent = "▲";} else {text.textContent = "View Code Snippet";arrow.textContent = "▼";}}
   function openLightbox(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden'}
   function closeLightbox(el){el.classList.remove('open');document.body.style.overflow=''}
   const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.15});
