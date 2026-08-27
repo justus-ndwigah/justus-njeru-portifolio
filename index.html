@@ -226,20 +226,44 @@ function getStudentMarks($student_id, $term) {
   $stmt->execute([$student_id, $term]);
   return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }</code></pre></div></div></div>
-    <div class="project-card"><div class="project-body"><div class="project-tag">Government · Database</div><div class="project-title">County Financial Database</div><div class="project-desc">SQL database for Embu County Government to track project expenditure and budget allocations across departments.</div><div class="project-stack"><span class="stack-tag">SQL</span><span class="stack-tag">Database Design</span><span class="stack-tag">Government</span></div><div class="project-actions"><a href="https://github.com/justus-ndwigah" target="_blank" class="btn btn-primary btn-sm">⌥ GitHub</a></div><button class="code-toggle" onclick="toggleCode('code1',this)"><span>View Code Snippet</span><span>▼</span></button><div class="code-block" id="code1"><pre><code class="language-sql">CREATE TABLE projects (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  project_name VARCHAR(255) NOT NULL,
-  budget DECIMAL(15,2),
-  expenditure DECIMAL(15,2) DEFAULT 0,
-  department VARCHAR(100),
-  status ENUM('active','completed','pending')
-);
-SELECT p.project_name, p.budget,
-       SUM(e.amount) AS total_spent,
-       (p.budget - SUM(e.amount)) AS balance
-FROM projects p
-LEFT JOIN expenditures e ON p.id = e.project_id
-GROUP BY p.id;</code></pre></div></div></div>
+<div class="project-card">
+    <div class="project-body">
+        <div class="project-tag">Development · Version Control</div>
+
+        <div class="project-title">Git & GitHub — Version Control & Collaboration</div> <div class="project-desc">
+            Practical experience using Git and GitHub for source code management,
+            version control, branching, commits, remote repositories, collaboration,
+            and maintaining organized software development workflows.
+        </div>
+ <div class="project-stack"><span class="stack-tag">Git</span><span class="stack-tag">GitHub</span><span class="stack-tag">Git CLI</span><span class="stack-tag">Version Control</span></div>
+ <div class="project-actions"><a href="https://github.com/justus-ndwigah"target="_blank"rel="noopener noreferrer"class="btn btn-primary btn-sm">⌥ View GitHub</a></div>
+ <button class="code-toggle" onclick="toggleCode('code1',this)"><span>View Git Workflow</span><span>▼</span></button>
+<div class="code-block" id="code1"><pre><code class="language-bash">
+  # Clone a remote repository 
+ git clone https://github.com/username/repository.git
+  
+# Check repository status
+git status
+  
+# Create a feature branch
+git checkout -b feature/new-feature
+
+# Stage changes
+git add .
+
+# Commit changes
+git commit -m "Add new feature"
+
+# Push branch to GitHub
+git push -u origin feature/new-feature
+
+# Update local repository
+git pull origin main
+
+# Merge changes into main
+git checkout main
+git merge feature/new-feature</code></pre></div></div></div>
+    
     <div class="project-card"><div class="project-body"><div class="project-tag">Education ·  Web App</div><div class="project-title">UniPathKE — Find Your University Path</div><div class="project-desc">Kenya's complete KUCCPS pathway guide, helping KCSE candidates discover the right university, diploma, or TVET program based on their grade level.</div><div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">TypeScript</span><span class="stack-tag">Node.js</span><span class="stack-tag">KUCCPS</span></div><div class="project-actions"><a href="https://justus-ndwigah.github.io/UniPathKE/" target="_blank" class="btn btn-primary btn-sm">⌥ Github</a></div><button class="code-toggle" onclick="toggleCode('code3',this)"><span>View Config Snippet</span><span>▼</span></button><div class="code-block" id="code3"><pre><code class="language-bash">// Match student's KCSE mean grade to eligible pathways
 function getEligiblePathways(meanGrade: string, cluster: string): Pathway[] {
   const gradePoints = GRADE_SCALE[meanGrade];
