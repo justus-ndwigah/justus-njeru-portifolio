@@ -205,51 +205,175 @@
 <section id="projects" style="background:var(--surface)">
   <div class="section-label">Work</div>
   <h2 class="section-title">Key ICT<br>Projects</h2>
-  <div class="projects-grid">
-  <div class="project-card">
-    <div class="project-body">
-        <div class="project-tag">Church System</div><div class="project-title">Church Flow System</div> <div class="project-desc"> PHP/MySQL web application for church records management and timely church updates.</div><div class="project-stack">
-            <span class="stack-tag">PHP</span><span class="stack-tag">MySQL</span><span class="stack-tag">HTML/CSS</span></div> <div class="project-actions"><a  href="https://churchflowsystem.unaux.com/"  target="_blank"  rel="noopener noreferrer" class="btn btn-primary btn-sm">  🌐 Visit Live System</a></div><button class="code-toggle" onclick="toggleCode('code2',this)">
-            <span>View Code Snippet</span><span>▼</span></button><div class="code-block" id="code2"><pre><code class="language-php">&lt;?php function getStudentMarks($student_id, $term) {
-  $sql = "SELECT s.subject_name, m.marks, m.grade
-          FROM marks m JOIN subjects s ON m.subject_id = s.id
-          WHERE m.student_id = ? AND m.term = ?";
-  $stmt = $this->db->prepare($sql);
-  $stmt->execute([$student_id, $term]);
-  return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}</code></pre></div></div></div>
 
- <div class="project-card"><div class="project-body"><div class="project-tag">Education · Web App</div><div class="project-title">School Management System</div><div class="project-desc">PHP/MySQL web app for student records management and give school updates to the community.</div><div class="project-desc">ALERT!!!!APP Coming Soon...</div>
-   <div class="project-stack"><span class="stack-tag">PHP</span><span class="stack-tag">MySQL</span><span class="stack-tag">HTML/CSS</span></div>
-   <div class="project-actions"><a href=" https://justus-ndwigah.github.io/kavingoni-sec-website/" target="_blank" class="btn btn-primary btn-sm">⌥ GitHub</a></div>
-    <button class="code-toggle" onclick="toggleCode('code1',this)"><span>View Code Snippet</span><span>▼</span></button>
-<div class="code-block" id="code1"><pre><code class="language-php">&lt;
- ?php function getStudentMarks($student_id, $term) {
-  $sql = "SELECT s.subject_name, m.marks, m.grade
-          FROM marks m JOIN subjects s ON m.subject_id = s.id
-          WHERE m.student_id = ? AND m.term = ?";
-  $stmt = $this->db->prepare($sql);
-  $stmt->execute([$student_id, $term]);
-  return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}</code></pre></div></div></div>
-    
-<div class="project-card">
-    <div class="project-body">
-      <div class="project-tag">Development · Version Control</div><div class="project-title">Git & GitHub — Version Control & Collaboration</div> <div class="project-desc">
-            Practical experience using Git and GitHub for source code management,
-            version control, branching, commits, remote repositories, collaboration,
-            and maintaining organized software development workflows.
+  <div class="projects-grid">
+
+    <!-- CHURCH FLOW SYSTEM -->
+    <div class="project-card">
+      <div class="project-body">
+
+        <div class="project-tag">Church System</div>
+
+        <div class="project-title">Church Flow System</div>
+
+        <div class="project-desc">
+          PHP/MySQL web application for church records management and timely church updates.
         </div>
- <div class="project-stack"><span class="stack-tag">Git</span><span class="stack-tag">GitHub</span><span class="stack-tag">Git CLI</span><span class="stack-tag">Version Control</span></div>
- <div class="project-actions"><a href="https://github.com/justus-ndwigah"target="_blank"rel="noopener noreferrer"class="btn btn-primary btn-sm">⌥ View GitHub</a></div>
- <button class="code-toggle" onclick="toggleCode('code1',this)"><span>View Git Workflow</span><span>▼</span></button>
-<div class="code-block" id="code1"><pre><code class="language-bash">
-  # Clone a remote repository 
- git clone https://github.com/username/repository.git
-  
+
+        <div class="project-stack">
+          <span class="stack-tag">PHP</span>
+          <span class="stack-tag">MySQL</span>
+          <span class="stack-tag">HTML/CSS</span>
+        </div>
+
+        <div class="project-actions">
+          <a href="https://churchflowsystem.unaux.com/"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn btn-primary btn-sm">
+            🌐 Visit Live System
+          </a>
+        </div>
+
+        <button class="code-toggle"
+                onclick="toggleCode('code-church',this)">
+          <span>View Code Snippet</span>
+          <span>▼</span>
+        </button>
+
+        <div class="code-block" id="code-church">
+          <pre><code class="language-php">&lt;?php
+
+function getChurchMembers($status = 'active') {
+
+    $sql = "SELECT id, full_name, phone, email, ministry, status
+            FROM members
+            WHERE status = ?
+            ORDER BY full_name ASC";
+
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute([$status]);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Retrieve active church members
+$members = getChurchMembers('active');
+
+?&gt;</code></pre>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- SCHOOL MANAGEMENT SYSTEM -->
+    <div class="project-card">
+      <div class="project-body">
+
+        <div class="project-tag">Education · Web App</div>
+
+        <div class="project-title">School Management System</div>
+
+        <div class="project-desc">
+          PHP/MySQL web app for student records management and school updates to the community.
+        </div>
+
+        <div class="project-desc">
+          ALERT!!!! APP Coming Soon...
+        </div>
+
+        <div class="project-stack">
+          <span class="stack-tag">PHP</span>
+          <span class="stack-tag">MySQL</span>
+          <span class="stack-tag">HTML/CSS</span>
+        </div>
+
+        <div class="project-actions">
+          <a href="https://justus-ndwigah.github.io/kavingoni-sec-website/"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn btn-primary btn-sm">
+            🌐 View Website
+          </a>
+        </div>
+
+        <button class="code-toggle"
+                onclick="toggleCode('code-school',this)">
+          <span>View Code Snippet</span>
+          <span>▼</span>
+        </button>
+
+        <div class="code-block" id="code-school">
+          <pre><code class="language-php">&lt;?php
+
+function getStudentMarks($student_id, $term) {
+
+    $sql = "SELECT s.subject_name, m.marks, m.grade
+            FROM marks m
+            JOIN subjects s ON m.subject_id = s.id
+            WHERE m.student_id = ? AND m.term = ?";
+
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute([$student_id, $term]);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+?&gt;</code></pre>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- GIT & GITHUB -->
+    <div class="project-card">
+      <div class="project-body">
+
+        <div class="project-tag">
+          Development · Version Control
+        </div>
+
+        <div class="project-title">
+          Git &amp; GitHub — Version Control &amp; Collaboration
+        </div>
+
+        <div class="project-desc">
+          Practical experience using Git and GitHub for source code management,
+          version control, branching, commits, remote repositories, collaboration,
+          and maintaining organized software development workflows.
+        </div>
+
+        <div class="project-stack">
+          <span class="stack-tag">Git</span>
+          <span class="stack-tag">GitHub</span>
+          <span class="stack-tag">Git CLI</span>
+          <span class="stack-tag">Version Control</span>
+        </div>
+
+        <div class="project-actions">
+          <a href="https://github.com/justus-ndwigah"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn btn-primary btn-sm">
+            ⌥ View GitHub
+          </a>
+        </div>
+
+        <button class="code-toggle"
+                onclick="toggleCode('code-git',this)">
+          <span>View Git Workflow</span>
+          <span>▼</span>
+        </button>
+
+        <div class="code-block" id="code-git">
+          <pre><code class="language-bash"># Clone a remote repository
+git clone https://github.com/username/repository.git
+
 # Check repository status
 git status
-  
+
 # Create a feature branch
 git checkout -b feature/new-feature
 
@@ -259,82 +383,283 @@ git add .
 # Commit changes
 git commit -m "Add new feature"
 
-# Push branch to GitHub
+# Push changes to GitHub
 git push -u origin feature/new-feature
 
 # Update local repository
 git pull origin main
 
-# Merge changes into main
+# Switch to main branch
 git checkout main
-git merge feature/new-feature</code></pre></div></div></div>
-    
-    <div class="project-card"><div class="project-body"><div class="project-tag">Education ·  Web App</div><div class="project-title">UniPathKE — Find Your University Path</div><div class="project-desc">Kenya's complete KUCCPS pathway guide, helping KCSE candidates discover the right university, diploma, or TVET program based on their grade level.</div><div class="project-stack"><span class="stack-tag">React</span><span class="stack-tag">TypeScript</span><span class="stack-tag">Node.js</span><span class="stack-tag">KUCCPS</span></div><div class="project-actions"><a href="https://justus-ndwigah.github.io/UniPathKE/" target="_blank" class="btn btn-primary btn-sm">⌥ Github</a></div><button class="code-toggle" onclick="toggleCode('code3',this)"><span>View Config Snippet</span><span>▼</span></button><div class="code-block" id="code3"><pre><code class="language-bash">// Match student's KCSE mean grade to eligible pathways
-function getEligiblePathways(meanGrade: string, cluster: string): Pathway[] {
+
+# Merge feature branch
+git merge feature/new-feature</code></pre>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- UNIPATHKE -->
+    <div class="project-card">
+      <div class="project-body">
+
+        <div class="project-tag">
+          Education · Web App
+        </div>
+
+        <div class="project-title">
+          UniPathKE — Find Your University Path
+        </div>
+
+        <div class="project-desc">
+          Kenya's complete KUCCPS pathway guide, helping KCSE candidates discover
+          the right university, diploma, or TVET program based on their grade level.
+        </div>
+
+        <div class="project-stack">
+          <span class="stack-tag">React</span>
+          <span class="stack-tag">TypeScript</span>
+          <span class="stack-tag">Node.js</span>
+          <span class="stack-tag">KUCCPS</span>
+        </div>
+
+        <div class="project-actions">
+          <a href="https://justus-ndwigah.github.io/UniPathKE/"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn btn-primary btn-sm">
+            🌐 View Project
+          </a>
+        </div>
+
+        <button class="code-toggle"
+                onclick="toggleCode('code3',this)">
+          <span>View Config Snippet</span>
+          <span>▼</span>
+        </button>
+
+        <div class="code-block" id="code3">
+          <pre><code class="language-typescript">// Match a student's KCSE grade
+// to eligible education pathways
+
+function getEligiblePathways(
+  meanGrade: string,
+  cluster: string
+): Pathway[] {
+
   const gradePoints = GRADE_SCALE[meanGrade];
 
-  return PATHWAYS.filter((pathway) => {
-    const meetsMinimum = gradePoints >= pathway.minPoints;
-    const meetsCluster = pathway.clusterSubjects.every((subject) =>
-      cluster.includes(subject)
-    );
-    return meetsMinimum && meetsCluster;
-  }).map((pathway) => ({
-    ...pathway,
-    tier: gradePoints >= pathway.universityCutoff
-      ? "University"
-      : gradePoints >= pathway.diplomaCutoff
-      ? "Diploma"
-      : "TVET",
-  }));
-}
-netsh advfirewall firewall add rule name="Block External RDP" protocol=TCP dir=in localport=3389 action=block</code></pre></div></div></div>
-  <div class="project-card"><div class="project-body"><div class="project-tag">Education · Web Development</div><div class="project-title">School Websites &amp; Edu-Tech</div><div class="project-desc">Responsive websites for St Thomas Kavingoni Senior School using HTML5/CSS, PHP</div><div class="project-stack"><span class="stack-tag">PHP</span><span class="stack-tag">HTML5/CSS</span><span class="stack-tag">Education-Tech</span></div><div class="project-actions">
-    <a href="https://justus-ndwigah.github.io/website-kavingoni-ict/" target="_blank" class="btn btn-primary btn-sm">⌥ GitHub</a></div>
-    <button class="code-toggle" onclick="toggleCode('code4',this)"><span>View Website Snippet</span><span>▼</span></button>
-    <div class="code-block" id="code4"><pre><code class="language-php">&lt;  A modern, responsive school website designed and developed to
-            showcase St. Thomas Kavingoni Senior School's academic excellence,
-            ICT innovation, student life, departments, achievements and
-            school community. The website features an interactive image
-            slideshow, organised dropdown navigation, school gallery,
-            contact information and an integrated Google Maps location.
+  return PATHWAYS
+    .filter((pathway) => {
 
-}</code></pre></div></div></div>
-    <div class="project-card">
-    <div class="project-body">
-<div class="project-tag">Job Application System</div>
-<div class="project-title">Smart WEb Application Form</div>
-<div class="project-desc">
-            A professional web-based recruitment application system designed to
-            collect, validate, review, and securely submit job applications.
-            The system sends confirmation emails to both the applicant and the hiring institution.
-        </div>
-      <div class="project-stack"><span class="stack-tag">HTML</span><span class="stack-tag">CSS</span><span class="stack-tag">JavaScript</span><span class="stack-tag">Google Apps Script</span><span class="stack-tag">Google Sheets</span><span class="stack-tag">Google Drive</span></div>
-<div class="project-actions"><a href=" https://justus-ndwigah.github.io/online-application-form/" target="_blank"rel="noopener noreferrer"class="btn btn-primary btn-sm">🌐 View Application Form</a></div>
-      <button class="code-toggle" onclick="toggleCode('code2',this)"><span>View Code Snippet</span><span>▼</span></button>
-<div class="code-block" id="code2"><pre><code class="language-javascript">
-  // Automatic application draft saving
-const DRAFT_KEY = 'SmartWebEmploymentApplicationDraft';
-function saveDraft() {
-    const data = {};
-    document.querySelectorAll(
-        'input: not([type="file"]), select, textarea'
-    ).forEach(field => {
-        if (field.name) {
-            data[field.name] = field.value;
-        }});
-data.currentSection = current;localStorage.setItem( DRAFT_KEY, JSON.stringify(data)
-    );}
-// Restore applicant information after page refresh
-function restoreDraft() {
-    const saved = localStorage.getItem(DRAFT_KEY);
-    if (!saved) return;
-    const data = JSON.parse(saved);
-    Object.keys(data).forEach(key => {
-        const field = document.querySelector(
-            `[name="${key}"]`
+      const meetsMinimum =
+        gradePoints >= pathway.minPoints;
+
+      const meetsCluster =
+        pathway.clusterSubjects.every(
+          (subject) => cluster.includes(subject)
         );
-        if (field) {field.value = data[key];}});}</code></pre></div></div></div>
+
+      return meetsMinimum && meetsCluster;
+    })
+
+    .map((pathway) => ({
+      ...pathway,
+
+      tier:
+        gradePoints >= pathway.universityCutoff
+          ? "University"
+          : gradePoints >= pathway.diplomaCutoff
+          ? "Diploma"
+          : "TVET"
+    }));
+}</code></pre>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- SCHOOL WEBSITES -->
+    <div class="project-card">
+      <div class="project-body">
+
+        <div class="project-tag">
+          Education · Web Development
+        </div>
+
+        <div class="project-title">
+          School Websites &amp; Edu-Tech
+        </div>
+
+        <div class="project-desc">
+          Responsive websites for St Thomas Kavingoni Senior School using HTML5/CSS and PHP.
+        </div>
+
+        <div class="project-stack">
+          <span class="stack-tag">PHP</span>
+          <span class="stack-tag">HTML5/CSS</span>
+          <span class="stack-tag">Education-Tech</span>
+        </div>
+
+        <div class="project-actions">
+          <a href="https://justus-ndwigah.github.io/website-kavingoni-ict/"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn btn-primary btn-sm">
+            🌐 View Website
+          </a>
+        </div>
+
+        <button class="code-toggle"
+                onclick="toggleCode('code4',this)">
+          <span>View Website Snippet</span>
+          <span>▼</span>
+        </button>
+
+        <div class="code-block" id="code4">
+          <pre><code class="language-html">&lt;!-- Responsive school website navigation --&gt;
+
+&lt;nav class="navbar"&gt;
+
+  &lt;a href="index.html" class="logo"&gt;
+    St. Thomas Kavingoni
+  &lt;/a&gt;
+
+  &lt;ul class="nav-links"&gt;
+
+    &lt;li&gt;
+      &lt;a href="index.html"&gt;Home&lt;/a&gt;
+    &lt;/li&gt;
+
+    &lt;li&gt;
+      &lt;a href="about.html"&gt;About&lt;/a&gt;
+    &lt;/li&gt;
+
+    &lt;li&gt;
+      &lt;a href="academics.html"&gt;Academics&lt;/a&gt;
+    &lt;/li&gt;
+
+    &lt;li&gt;
+      &lt;a href="gallery.html"&gt;Gallery&lt;/a&gt;
+    &lt;/li&gt;
+
+    &lt;li&gt;
+      &lt;a href="contact.html"&gt;Contact&lt;/a&gt;
+    &lt;/li&gt;
+
+  &lt;/ul&gt;
+
+&lt;/nav&gt;</code></pre>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- SMART WEB APPLICATION FORM -->
+    <div class="project-card">
+      <div class="project-body">
+
+        <div class="project-tag">
+          Job Application System
+        </div>
+
+        <div class="project-title">
+          Smart Web Application Form
+        </div>
+
+        <div class="project-desc">
+          A professional web-based recruitment application system designed to
+          collect, validate, review, and securely submit job applications.
+          The system sends confirmation emails to both the applicant and the hiring institution.
+        </div>
+
+        <div class="project-stack">
+          <span class="stack-tag">HTML</span>
+          <span class="stack-tag">CSS</span>
+          <span class="stack-tag">JavaScript</span>
+          <span class="stack-tag">Google Apps Script</span>
+          <span class="stack-tag">Google Sheets</span>
+          <span class="stack-tag">Google Drive</span>
+        </div>
+
+        <div class="project-actions">
+          <a href="https://justus-ndwigah.github.io/online-application-form/"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn btn-primary btn-sm">
+            🌐 View Application Form
+          </a>
+        </div>
+
+        <button class="code-toggle"
+                onclick="toggleCode('code-application',this)">
+          <span>View Code Snippet</span>
+          <span>▼</span>
+        </button>
+
+        <div class="code-block" id="code-application">
+          <pre><code class="language-javascript">// Automatic application draft saving
+
+const DRAFT_KEY =
+  'SmartWebEmploymentApplicationDraft';
+
+function saveDraft() {
+
+  const data = {};
+
+  document.querySelectorAll(
+    'input:not([type="file"]), select, textarea'
+  ).forEach(field => {
+
+    if (field.name) {
+      data[field.name] = field.value;
+    }
+
+  });
+
+  data.currentSection = current;
+
+  localStorage.setItem(
+    DRAFT_KEY,
+    JSON.stringify(data)
+  );
+}
+
+
+// Restore applicant information
+// after page refresh
+
+function restoreDraft() {
+
+  const saved =
+    localStorage.getItem(DRAFT_KEY);
+
+  if (!saved) return;
+
+  const data =
+    JSON.parse(saved);
+
+  Object.keys(data).forEach(key => {
+
+    const field =
+      document.querySelector(
+        `[name="${key}"]`
+      );
+
+    if (field) {
+      field.value = data[key];
+    }
+
+  });
+}</code></pre>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
